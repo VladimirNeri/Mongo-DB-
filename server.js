@@ -17,24 +17,27 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
+mongoose.Promise = Promise; 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
-  axios.get("https://www.laweekly.com/category/food").then(function(response) {
+  axios.get("https://www.npr.org/sections/news").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
-    $("article").each(function(i, element) {
+    $("div.item-info").each(function(i, element) {
       
       var result = {};
-      result.title = $(this).children("a").text();
-      result.link = $(this).children("a").attr("href");
-
+      result.title = $(this).children("h2.title").children("a").text();
+      result.link = $(this).children("h2.title").children("a").attr("href");
+      result.summary = $(this).children("p.teaser").children("a").text();
+      // result.save = false;
+      
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
         .then(function(dbArticle) {
