@@ -15,6 +15,14 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 
+router.get("/" ,function(req,res){
+  res.render("index")
+})
+
+router.get("/saved", function(req,res){
+  res.render("saved");
+})
+
 // A GET route for scraping the echoJS website
 router.get("/scrape", function(req, res) {
     // First, we grab the body of the html with axios
