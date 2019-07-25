@@ -22,7 +22,6 @@ function renderArticles() {
 
 renderArticles();
 
-
 // this function renders notes that are associated with an article
 function renderNotes(articleId) {
     // Empty the notes from the note section
@@ -50,7 +49,6 @@ function renderNotes(articleId) {
 
         });
 }
-
 
 // Whenever someone clicks add note for an article 
 $(document).on("click", ".addNotes", function () {

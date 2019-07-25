@@ -1,6 +1,6 @@
 # All the News That's Fit to Scrape
 
-## https://secure-castle-29330.herokuapp.com
+## https://pure-depths-86569.herokuapp.com/
 
 ### Overview
 
