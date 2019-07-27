@@ -34,16 +34,14 @@ router.get("/scrape", function (req, res) {
       result.title = $(this).children("h2.title").children("a").text();
       result.link = $(this).children("h2.title").children("a").attr("href");
       result.summary = $(this).children("p.teaser").children("a").text();
-      // result.save = false;
+      result.save = false;
 
-      // Create a new Article using the `result` object built from scraping
+      // Create a new Article using the `result` object built from scraping.  Activity 20
       db.Article.create(result)
         .then(function (dbArticle) {
-          // View the added result in the console
           console.log(dbArticle);
         })
         .catch(function (err) {
-          // If an error occurred, log it
           console.log(err);
         });
     });
@@ -53,7 +51,7 @@ router.get("/scrape", function (req, res) {
   });
 });
 
-// Route for getting all Articles from the db
+// Route for getting all Articles from the db.  Activity 20
 router.get("/articles", function (req, res) {
   // Grab every document in the Articles collection
   db.Article.find({})
@@ -79,7 +77,7 @@ router.get("/articles/:id", function (req, res) {
     });
 })
 
-// Route for saving/updating an Article's associated Note
+// Route for saving/updating an Article's associated Note.  Activity 20
 router.post("/articles/:id", function (req, res) {
   db.Note.create(req.body)
     .then(function (dbNote) {

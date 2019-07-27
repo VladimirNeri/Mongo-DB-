@@ -2,6 +2,7 @@
 function renderArticles() {
   $.getJSON("/articles", function (data) {
     console.log(data)
+    
     for (var i = (data.length-1); i > (data.length-20); i--) {
 
       var newCard = `<div class="card">
