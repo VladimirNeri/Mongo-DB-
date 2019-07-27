@@ -1,5 +1,3 @@
-
-
 // Grab the articles as a json
 function renderArticles() {
   $.getJSON("/articles", function (data) {
@@ -13,8 +11,6 @@ function renderArticles() {
       <a  href="#"  data-id="${ data[i]._id}" class="btn btn-primary saveArticle">Save Article</a>
       </div>
       </div>`
-
-      // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
       $("#articles").append(newCard);
     }
   });
@@ -23,7 +19,6 @@ function renderArticles() {
 renderArticles();
 
 $(document).on("click", ".saveArticle", function () {
-
   // console.log("something has been clicked" + $(this).data("id") )
  var id = $(this).data("id")
   $.post( "savethisarticle/"+ id, function( data ) {

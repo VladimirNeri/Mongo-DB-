@@ -1,4 +1,3 @@
-
 // Grab the articles as a json and then display it on the page
 function renderArticles() {
     $.getJSON("/articles", function (data) {
@@ -46,9 +45,9 @@ function renderNotes(articleId) {
                      <button data-id='${data[i]._id}' data-articleid ="${articleId}"  class="deleteBtn btn btn-dark">X</button>${data[i].body}</span>`);
                 }
             }
-
         });
 }
+
 
 // Whenever someone clicks add note for an article 
 $(document).on("click", ".addNotes", function () {
@@ -109,6 +108,4 @@ $(document).on("click", "#savenote", function () {
     // removing the values entered in the input and textarea for note entry
     $("#bodyinput").val("");
     $("#notes").hide()
-
-
 });
