@@ -1,10 +1,10 @@
 // Grab the articles as a json and then display it on the page
 function renderArticles() {
     $.getJSON("/articles", function (data) {
-        // goes through article db, an renders only article that have been marek as saved
+        // For each one
         for (var i = 0; i < data.length; i++) {
             if (data[i].artsave === true) {
-                //creating card for each article entry
+                // Display the apropos information on the page
                 var newCard = `<div class="card">
                 <a href="${data[i].link}"><h5 class="card-header">${data[i].title}</h5></a>
                 <div class="card-body">
@@ -48,13 +48,11 @@ function renderNotes(articleId) {
         });
 }
 
-
 // Whenever someone clicks add note for an article 
 $(document).on("click", ".addNotes", function () {
     // Saving the id of the article
     var articleId = $(this).attr("data-id");
     renderNotes(articleId)
-
 });
 
 // deletes a particular note when the delete button is clicked
@@ -86,8 +84,7 @@ $(document).on("click", ".deleteArticle", function () {
         });
 })
 
-
-// When the save note button gets clicked
+// When you click the savenote button.  Activity 20.  
 $(document).on("click", "#savenote", function () {
     // Grab the id associated with the article from the submit button
     var articleId = $(this).attr("data-id");
@@ -105,7 +102,7 @@ $(document).on("click", "#savenote", function () {
             $("#notes").empty();
         });
 
-    // removing the values entered in the input and textarea for note entry
+    // removing the values entered in the input and textarea for note entry.  Activity 20
     $("#bodyinput").val("");
     $("#notes").hide()
 });

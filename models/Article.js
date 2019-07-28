@@ -21,7 +21,6 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
-
   artsave: {
     type: Boolean,
     required: false,
